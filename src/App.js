@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
+import Header from "./components/Header.js";
 import PropertyType from "./containers/PropertyType";
 import PropertyCondition from "./containers/PropertyCondition";
 import PropertyUse from "./containers/PropertyUse";
@@ -11,14 +12,12 @@ import ProjectEstimatedAmount from "./containers/ProjectEstimatedAmount";
 import BorrowerEmail from "./containers/BorrowerEmail";
 import FileNumber from "./containers/FileNumber";
 
-// import Header from "./components/Header";
-
 // import Cookie from "js-cookie";
 
 const App = () => {
   return (
     <Router>
-      {/* <Header></Header> */}
+      <Header></Header>
 
       <Switch>
         <Route path="/property_condition">
