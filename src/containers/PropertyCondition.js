@@ -9,7 +9,7 @@ const PropertyCondition = () => {
   return (
     <>
       <div className="wrapper">
-        <div className="main-title">etat du bien</div>
+        <div className="main-title">état du bien</div>
 
         <div className="property-type-box-container">
           <div className="property-type-box">

@@ -12,6 +12,7 @@
   --grey-border: #f0f0f0;
   --grey-box-border: #b7b7b7;
   --grey-box-shadow: #e4e4e4;
+  --grey-background: #f1f1f1;
 }
 
 /* pour faire disparaître la CSS dù au lien, donner une className au lien et noter ceci : */
@@ -33,7 +34,7 @@
   font-size: 18px;
 }
 .wrapper {
-  margin: 0px 50px 0px 50px;
+  margin: 0px 90px 0px 90px;
 }
 .header img {
   width: 289px;
@@ -44,8 +45,8 @@
 
 .main-title {
   font-family: "Oswald", sans-serif;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 35px;
+  font-weight: 900;
   color: var(--orange);
   text-transform: uppercase;
   margin: 25px 0px 25px 0px;
@@ -106,6 +107,56 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+/* ------------------------------------ PROPERTY COUNTRY CITY --------------------------------- */
+
+.country-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  background-color: var(--grey-background);
+  padding: 8px 0px 8px 15px;
+  margin-bottom: 10px;
+}
+.city-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 8px 0px 8px 15px;
+  margin-bottom: 10px;
+}
+
+.form-element-label {
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  width: 400px;
+}
+.form-element {
+  padding-left: 6px;
+  border: 1px solid var(--orange);
+  border-radius: 3px;
+  box-shadow: 0 2px 0 var(--orange);
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black);
+  text-transform: uppercase;
+}
+.select {
+  width: 250px;
+  height: 35px;
+}
+.input {
+  width: 241px;
+  height: 30px;
+}
+.text-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-bottom: 80px;
+  font-family: "Oswald", sans-serif;
+  font-size: 14px;
 }
 
 /* ------------------------------------ FOOTER --------------------------------- */
