@@ -80,23 +80,60 @@
 /* .checked {
   background-color: red;
 } */
+/* ------------------------------------ PROPERTY USE --------------------------------- */
+
+.property-use-box {
+  height: 80px;
+  width: 32.67%;
+  border: 1px solid var(--grey-box-border);
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 4px 0 var(--grey-box-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------------------------ BORROWER CURENT SITUATION --------------------------------- */
+
+.property-borrower-situation-box {
+  height: 80px;
+  width: 24.25%;
+  border: 1px solid var(--grey-box-border);
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 4px 0 var(--grey-box-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ------------------------------------ FOOTER --------------------------------- */
 .footer-nav {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 25px;
 }
-.footer-button-left {
+.footer-button-previous {
   font-family: "Oswald", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--black);
   text-decoration: underline;
+  cursor: pointer;
 }
-.footer-button-right {
+.footer-button-next {
   font-family: "Oswald", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--white);
   background-color: var(--orange);
   padding: 5px 40px 5px 40px;
   border-radius: 30px;
+}
+.footer-text {
+  font-family: "Oswald", sans-serif;
+  font-size: 10px;
+  color: var(--black);
+}
+.underline {
+  text-decoration: underline;
 }

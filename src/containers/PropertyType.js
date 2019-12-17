@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-// import Card from "../components/Card.js";
+import Footer from "../components/Footer.js";
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 
@@ -33,17 +32,15 @@ const PropertyType = () => {
               name="property-type"
               value="flat"
             ></input>
-            <label className="property-type-text" for="property-type-1">
+            <label className="property-type-text" for="property-type-2">
               appartement
             </label>
           </div>
         </div>
-        <div className="footer-nav">
-          <div className="footer-button-left">Précédent</div>
-          <Link className="link" to={"/property_condition"}>
-            <div className="footer-button-right">Suivant</div>
-          </Link>
-        </div>
+        <Footer
+          link={"/property_condition"}
+          disableButtonPrevious={true}
+        ></Footer>
       </div>
     </>
   );
