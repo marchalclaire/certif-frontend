@@ -22,9 +22,14 @@ const Footer = props => {
             Précédent
           </div>
         )}
-        <Link className="link" to={props.link}>
-          <div className="footer-button-next">Suivant</div>
-        </Link>
+        {/* props recupérée des containers, si l'état n'existe pas cela signifie que rien n'a été coché ou remplie, on ne permet la navigation vers la page suivante en ne mettant pas de bouton "Suivant". */}
+        {!props.displayButtonNext ? (
+          <div></div>
+        ) : (
+          <Link className="link" to={props.link}>
+            <div className="footer-button-next">Suivant</div>
+          </Link>
+        )}
       </div>
       <div>
         <span className="footer-text">* Champ obligatoire - </span>
