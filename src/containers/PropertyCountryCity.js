@@ -18,6 +18,9 @@ const PropertyCountryCity = props => {
         "https://vicopo.selfbuild.fr/cherche/" + value
       );
       setCities(response.data.cities);
+      // s'il y a moins de 3 caractères dans l'imput, on affiche un tab vide :
+    } else {
+      setCities([]);
     }
   };
 
@@ -62,9 +65,17 @@ const PropertyCountryCity = props => {
             }}
           ></input>
           <ul>
-            <li>
-              <span></span>
-            </li>
+            {/* on boucle sur les données récupérées de l'API et on limite à 10 résulats : */}
+            {cities.map((city, index) => {
+              if (index < 11) {
+                return (
+                  <li key={index}>
+                    <span>{city.city} </span>
+                    <span>({city.code})</span>
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
         <div className="text-container">
