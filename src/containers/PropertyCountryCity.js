@@ -53,30 +53,41 @@ const PropertyCountryCity = props => {
         </div>
         <div className="city-container">
           <div className="form-element-label">Ville ou code postal *</div>
-
-          <input
-            className="form-element input"
-            type="text"
-            value={props.propertyCity}
-            onChange={event => {
-              props.setPropertyCity(event.target.value);
-              Cookies.set("propertyCity", event.target.value);
-              autocomplete(event.target.value);
-            }}
-          ></input>
-          <ul>
-            {/* on boucle sur les données récupérées de l'API et on limite à 10 résulats : */}
-            {cities.map((city, index) => {
-              if (index < 11) {
-                return (
-                  <li key={index}>
-                    <span>{city.city} </span>
-                    <span>({city.code})</span>
-                  </li>
-                );
-              }
-            })}
-          </ul>
+          <div className="dropdown">
+            <input
+              className="form-element input"
+              type="text"
+              value={props.propertyCity}
+              onChange={event => {
+                props.setPropertyCity(event.target.value);
+                Cookies.set("propertyCity", event.target.value);
+                autocomplete(event.target.value);
+              }}
+            ></input>
+            <ul className="dropdown-content">
+              {/* on boucle sur les données récupérées de l'API et on limite à 10 résulats : */}
+              {cities.map((city, index) => {
+                if (index < 10) {
+                  return (
+                    <li
+                      //au clic sur la liste on set la valeur de l'input avec la valeur sélectionnée dans la liste puis on met la liste à 0 en settant l'état cities à tab vide :
+                      onClick={() => {
+                        props.setPropertyCity(
+                          city.city + " (" + city.code + ")"
+                        );
+                        setCities([]);
+                      }}
+                      key={index}
+                    >
+                      <span>
+                        {city.city} ({city.code}){" "}
+                      </span>
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
         </div>
         <div className="text-container">
           La connaissance du code postal du bien permettra de calculer les frais
