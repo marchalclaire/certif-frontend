@@ -108,6 +108,7 @@
   justify-content: center;
   align-items: center;
 }
+
 /* ------------------------------------ PROPERTY COUNTRY CITY --------------------------------- */
 
 .country-container {
@@ -188,6 +189,68 @@ ul {
   display: flex;
   flex: 1;
   align-items: center;
+  margin-bottom: 80px;
+  font-family: "Oswald", sans-serif;
+  font-size: 14px;
+}
+
+/* ------------------------------------ PROJECT ESTIMATES AMOUNT --------------------------------- */
+.currency-symbol {
+  margin-left: 10px;
+}
+
+.margin-bottom {
+  margin-bottom: 80px;
+}
+
+/* ------------------------------------ BORROWER EMAIL --------------------------------- */
+.email-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 0px 90px 0px 90px;
+}
+.email-container-text {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--orange);
+  margin: 0px 60px 30px 0px;
+}
+.email-text {
+  width: 240px;
+  height: 160px;
+  font-family: "Oswald", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--white);
+  padding: 35px;
+}
+.email-img {
+  object-fit: contain;
+}
+.email-form-element {
+  border: 1px solid var(--grey-box-border);
+  border-radius: 3px;
+  box-shadow: 0 2px 0 var(--grey-box-shadow);
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--black);
+  width: 241px;
+  height: 30px;
+  padding-left: 8px;
+}
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+}
+.email-text-container {
+  position: relative;
+  top: -2px;
+  right: -5px;
+  display: flex;
   margin-bottom: 80px;
   font-family: "Oswald", sans-serif;
   font-size: 14px;

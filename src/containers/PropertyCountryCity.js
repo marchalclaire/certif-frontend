@@ -3,11 +3,6 @@ import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-// import React, { useState, useEffect } from "react";
-
-// import Card from "../components/Card.js";
-// import London from "../london.jpg";
-
 const PropertyCountryCity = props => {
   const [cities, setCities] = useState([]);
 
