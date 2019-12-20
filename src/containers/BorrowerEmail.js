@@ -3,8 +3,9 @@ import Footer from "../components/Footer.js";
 import Desktop from "../images/visuel-desktop-email.jpg";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import PropertyUse from "./PropertyUse.js";
 
-const BorrowerEmail = () => {
+const BorrowerEmail = props => {
   return (
     <>
       <div className="wrapper">
@@ -25,12 +26,11 @@ const BorrowerEmail = () => {
             type="email"
             name="borrower-email"
             required
-            // value="400000"
-            // onChange={event => {
-            //   props.setPropertyCity(event.target.value);
-            //   Cookies.set("propertyCity", event.target.value);
-            //   autocomplete(event.target.value);
-            // }}
+            value={props.borrowerEmail}
+            onChange={event => {
+              props.setBorrowerEmail(event.target.value);
+              Cookies.set("borrowerEmail", event.target.value);
+            }}
           ></input>
         </form>
         <div className="checkbox-container">
@@ -40,16 +40,10 @@ const BorrowerEmail = () => {
           </span>
         </div>
         <Footer
-          link={"/borrower_email"}
-          // displayButtonNext={props.propertyCountry && props.propertyCity}
+          link={"/file_number"}
+          displayButtonNext={props.borrowerEmail}
         ></Footer>
       </div>
-      <>
-        <div>Bienvenue sur la page 7 "BorrowerEmail"</div>
-        <Link to={"/file_number"}>
-          <div>Lien vers la page 8 "FileNumber"</div>
-        </Link>
-      </>
     </>
   );
 };
