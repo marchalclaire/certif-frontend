@@ -9,6 +9,7 @@
   --black: #000;
   --white: #fff;
   --orange: #ff9e23;
+  --orange-box-shadow: #ee8904;
   --grey-border: #f0f0f0;
   --grey-box-border: #b7b7b7;
   --grey-box-shadow: #e4e4e4;
@@ -69,6 +70,11 @@
   justify-content: center;
   align-items: center;
 }
+.selected {
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  box-shadow: 0 4px 0 var(--orange-box-shadow);
+}
 .property-type-text {
   font-family: "Oswald", sans-serif;
   font-size: 18px;
@@ -78,9 +84,9 @@
   font-weight: bold;
   margin-left: 10px;
 }
-/* .checked {
-  background-color: red;
-} */
+.checked {
+  color: white;
+}
 /* ------------------------------------ PROPERTY USE --------------------------------- */
 
 .property-use-box {

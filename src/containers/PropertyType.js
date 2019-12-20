@@ -16,7 +16,13 @@ const PropertyType = props => {
         <div className="main-title">type de bien</div>
 
         <div className="property-type-box-container">
-          <div className="property-type-box">
+          <div
+            className={
+              props.propertyType === "house"
+                ? "property-type-box selected"
+                : "property-type-box"
+            }
+          >
             <input
               type="radio"
               id="property-type-1"
@@ -28,14 +34,25 @@ const PropertyType = props => {
               onChange={event => {
                 setState(event.target.value);
               }}
+            ></input>
+            <label
+              className={
+                props.propertyType === "house"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
+              for="property-type-1"
             >
-              {/* {setIsSelected(true)} */}
-            </input>
-            <label className="property-type-text" for="property-type-1">
               maison
             </label>
           </div>
-          <div className="property-type-box">
+          <div
+            className={
+              props.propertyType === "flat"
+                ? "property-type-box selected"
+                : "property-type-box"
+            }
+          >
             <input
               type="radio"
               id="property-type-2"
@@ -46,7 +63,14 @@ const PropertyType = props => {
                 setState(event.target.value);
               }}
             ></input>
-            <label className="property-type-text" for="property-type-2">
+            <label
+              className={
+                props.propertyType === "flat"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
+              for="property-type-2"
+            >
               appartement
             </label>
           </div>
