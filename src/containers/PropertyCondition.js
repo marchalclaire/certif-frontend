@@ -4,7 +4,9 @@ import Cookies from "js-cookie";
 
 const PropertyCondition = props => {
   const setState = value => {
-    props.setPropertyCondition(value);
+    const state = { ...props.globalState };
+    state.propertyCondition = value;
+    props.setGlobalState(state);
     Cookies.set("propertyCondition", value);
   };
 
@@ -16,7 +18,7 @@ const PropertyCondition = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.propertyCondition === "old"
+              props.globalState.propertyCondition === "old"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -27,7 +29,7 @@ const PropertyCondition = props => {
               name="property-condition"
               value="old"
               // si état === "old", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
-              checked={props.propertyCondition === "old"}
+              checked={props.globalState.propertyCondition === "old"}
               // au clic sur radio, on set l'état et conserve la donnée dans un cookie :
               onChange={event => {
                 setState(event.target.value);
@@ -35,7 +37,7 @@ const PropertyCondition = props => {
             ></input>
             <label
               className={
-                props.propertyCondition === "old"
+                props.globalState.propertyCondition === "old"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -46,7 +48,7 @@ const PropertyCondition = props => {
           </div>
           <div
             className={
-              props.propertyCondition === "new"
+              props.globalState.propertyCondition === "new"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -57,7 +59,7 @@ const PropertyCondition = props => {
               name="property-condition"
               value="new"
               // si état === "new", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
-              checked={props.propertyCondition === "new"}
+              checked={props.globalState.propertyCondition === "new"}
               // au clic sur radio, on set l'état et conserve la donnée dans un cookie :
               onChange={event => {
                 setState(event.target.value);
@@ -65,7 +67,7 @@ const PropertyCondition = props => {
             ></input>
             <label
               className={
-                props.propertyCondition === "new"
+                props.globalState.propertyCondition === "new"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -78,7 +80,7 @@ const PropertyCondition = props => {
         {/* on envoie au Footer les props suivantes pour la navigation : Lien de la page suivante + L'état "propertyCondition" (permettant ou non l'affichage du bouton "Suivant") */}
         <Footer
           link="/property_use"
-          displayButtonNext={props.propertyCondition}
+          displayButtonNext={props.globalState.propertyCondition}
         ></Footer>
       </div>
     </>

@@ -4,7 +4,9 @@ import Cookies from "js-cookie";
 
 const PropertyType = props => {
   const setState = value => {
-    props.setPropertyType(value);
+    const state = { ...props.globalState };
+    state.propertyType = value;
+    props.setGlobalState(state);
     Cookies.set("propertyType", value);
   };
   return (
@@ -15,7 +17,7 @@ const PropertyType = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.propertyType === "house"
+              props.globalState.propertyType === "house"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -26,7 +28,8 @@ const PropertyType = props => {
               name="property-type"
               value="house"
               // si état === "house", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
-              checked={props.propertyType === "house"}
+
+              checked={props.globalState.propertyType === "house"}
               // au clic sur radio, on set l'état et conserve la donnée dans un cookie :
               onChange={event => {
                 setState(event.target.value);
@@ -34,7 +37,7 @@ const PropertyType = props => {
             ></input>
             <label
               className={
-                props.propertyType === "house"
+                props.globalState.propertyType === "house"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -45,7 +48,7 @@ const PropertyType = props => {
           </div>
           <div
             className={
-              props.propertyType === "flat"
+              props.globalState.propertyType === "flat"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -55,14 +58,14 @@ const PropertyType = props => {
               id="property-type-2"
               name="property-type"
               value="flat"
-              checked={props.propertyType === "flat"}
+              checked={props.globalState.propertyType === "flat"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.propertyType === "flat"
+                props.globalState.propertyType === "flat"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -76,7 +79,7 @@ const PropertyType = props => {
           //on envoie au Footer les props suivantes pour la navigation : Lien de la page suivante + Un booléen (permettant ou non l'affichage du bouton "Précédent") + L'état "propertyType" (permettant ou non l'affichage du bouton "Suivant")
           link={"/property_condition"}
           disableButtonPrevious={true}
-          displayButtonNext={props.propertyType}
+          displayButtonNext={props.globalState.propertyType}
         ></Footer>
       </div>
     </>

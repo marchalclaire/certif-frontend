@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../images/logo.jpg";
 
-const Header = () => {
+const Header = props => {
   return (
     <>
       <div className="header">
         <div className="wrapper">
-          <img src={Logo} alt={Logo}></img>
-          <div>Crédit immobilier : 5 mn pour obtenir le meilleur taux</div>
+          <div className="header-container">
+            <div>
+              <img src={Logo} alt={Logo}></img>
+              <div>Crédit immobilier : 5 mn pour obtenir le meilleur taux</div>
+            </div>
+            <button
+              onClick={() => {
+                props.setShowModal(true);
+              }}
+            >
+              Admin
+            </button>
+          </div>
         </div>
       </div>
     </>

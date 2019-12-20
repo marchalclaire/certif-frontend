@@ -4,7 +4,9 @@ import Cookies from "js-cookie";
 
 const PropertyUse = props => {
   const setState = value => {
-    props.setPropertyUse(value);
+    const state = { ...props.globalState };
+    state.propertyUse = value;
+    props.setGlobalState(state);
     Cookies.set("propertyUse", value);
   };
 
@@ -16,7 +18,7 @@ const PropertyUse = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.propertyUse === "principal"
+              props.globalState.propertyUse === "principal"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -26,14 +28,14 @@ const PropertyUse = props => {
               id="property-use-1"
               name="property-use"
               value="principal"
-              checked={props.propertyUse === "principal"}
+              checked={props.globalState.propertyUse === "principal"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.propertyUse === "principal"
+                props.globalState.propertyUse === "principal"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -44,7 +46,7 @@ const PropertyUse = props => {
           </div>
           <div
             className={
-              props.propertyUse === "secondary"
+              props.globalState.propertyUse === "secondary"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -54,14 +56,14 @@ const PropertyUse = props => {
               id="property-use-2"
               name="property-use"
               value="secondary"
-              checked={props.propertyUse === "secondary"}
+              checked={props.globalState.propertyUse === "secondary"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.propertyUse === "secondary"
+                props.globalState.propertyUse === "secondary"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -72,7 +74,7 @@ const PropertyUse = props => {
           </div>
           <div
             className={
-              props.propertyUse === "investment"
+              props.globalState.propertyUse === "investment"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -82,14 +84,14 @@ const PropertyUse = props => {
               id="property-use-3"
               name="property-use"
               value="investment"
-              checked={props.propertyUse === "investment"}
+              checked={props.globalState.propertyUse === "investment"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.propertyUse === "investment"
+                props.globalState.propertyUse === "investment"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -101,7 +103,7 @@ const PropertyUse = props => {
         </div>
         <Footer
           link={"/borrower_current_situation"}
-          displayButtonNext={props.propertyUse}
+          displayButtonNext={props.globalState.propertyUse}
         ></Footer>
       </div>
     </>

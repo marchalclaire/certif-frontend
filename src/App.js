@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
+import BackOfficeLogIn from "./components/BackOfficeLogIn.js";
 
 import "./App.css";
 
@@ -13,14 +14,15 @@ import PropertyCountryCity from "./containers/PropertyCountryCity";
 import ProjectEstimatedAmount from "./containers/ProjectEstimatedAmount";
 import BorrowerEmail from "./containers/BorrowerEmail";
 import FileNumber from "./containers/FileNumber";
+import BackOffice from "./containers/BackOffice";
 
 const App = () => {
   //on crée un état global par page (ou plusieurs selon nombre de champs renseignés par page) pour enregistrer les données à chaque étape et les rendre persistantes gràce aux cookies.
-  const [propertyType, setPropertyType] = useState(Cookies.get("propertyType"));
-  const [propertyCondition, setPropertyCondition] = useState(
-    Cookies.get("propertyCondition")
-  );
-  const [propertyUse, setPropertyUse] = useState(Cookies.get("propertyUse"));
+
+  // const [propertyCondition, setPropertyCondition] = useState(
+  //   Cookies.get("propertyCondition")
+  // );
+  // const [propertyUse, setPropertyUse] = useState(Cookies.get("propertyUse"));
   const [borrowerCurrentSituation, setBorrowerCurrentSituation] = useState(
     Cookies.get("borrowerCurrentSituation")
   );
@@ -40,23 +42,38 @@ const App = () => {
   const [borrowerEmail, setBorrowerEmail] = useState(
     Cookies.get("borrowerEmail")
   );
+  const [globalState, setGlobalState] = useState({
+    propertyType: Cookies.get("propertyType"),
+    propertyCondition: Cookies.get("propertyCondition"),
+    propertyUse: Cookies.get("propertyUse")
+  });
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <Router>
-      <Header></Header>
+      {showModal === true && (
+        <BackOfficeLogIn
+          showModal={showModal}
+          setShowModal={setShowModal}
+        ></BackOfficeLogIn>
+      )}
+      <Header showModal={showModal} setShowModal={setShowModal}></Header>
 
       <Switch>
+        <Route path="/back_office">
+          <BackOffice />
+        </Route>
         <Route path="/property_condition">
           <PropertyCondition
-            propertyCondition={propertyCondition}
-            setPropertyCondition={setPropertyCondition}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
         <Route path="/property_use">
           <PropertyUse
-            propertyUse={propertyUse}
-            setPropertyUse={setPropertyUse}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
@@ -86,7 +103,7 @@ const App = () => {
             setNotaryCosts={setNotaryCosts}
             totalAmount={totalAmount}
             setTotalAmount={setTotalAmount}
-            propertyCondition={propertyCondition}
+            // propertyCondition={propertyCondition}
           />
         </Route>
 
@@ -103,8 +120,8 @@ const App = () => {
 
         <Route path="/">
           <PropertyType
-            propertyType={propertyType}
-            setPropertyType={setPropertyType}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
       </Switch>
