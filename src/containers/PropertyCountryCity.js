@@ -70,6 +70,10 @@ const PropertyCountryCity = props => {
                         props.setPropertyCity(
                           city.city + " (" + city.code + ")"
                         );
+                        Cookies.set(
+                          "propertyCity",
+                          city.city + " (" + city.code + ")"
+                        );
                         setCities([]);
                       }}
                       key={index}

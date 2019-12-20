@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // props transmises par chaque page container. Props envoyée = lien de la page suivante servant à la navigation + booléen permettant de masquer le bouton "Précédent")
 const Footer = props => {
@@ -26,7 +27,13 @@ const Footer = props => {
         {!props.displayButtonNext ? (
           <div></div>
         ) : (
-          <Link className="link" to={props.link}>
+          <Link
+            className="link"
+            to={props.link}
+            // onClick={() => {
+            //   Cookies.set("currentStep", props.link);
+            // }}
+          >
             <div className="footer-button-next">Suivant</div>
           </Link>
         )}

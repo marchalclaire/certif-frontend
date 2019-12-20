@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
+
 import "./App.css";
 
 import Header from "./components/Header.js";
@@ -14,7 +15,7 @@ import BorrowerEmail from "./containers/BorrowerEmail";
 import FileNumber from "./containers/FileNumber";
 
 const App = () => {
-  //on crée un état global par page pour enregistrer les données à chaque étape et les rendre persistantes gràce aux cookies.
+  //on crée un état global par page (ou plusieurs selon nombre de champs renseignés par page) pour enregistrer les données à chaque étape et les rendre persistantes gràce aux cookies.
   const [propertyType, setPropertyType] = useState(Cookies.get("propertyType"));
   const [propertyCondition, setPropertyCondition] = useState(
     Cookies.get("propertyCondition")
@@ -27,9 +28,15 @@ const App = () => {
     Cookies.get("propertyCountry")
   );
   const [propertyCity, setPropertyCity] = useState(Cookies.get("propertyCity"));
-  const [projectEstimatedAmount, setProjectEstimatedAmount] = useState(
-    Cookies.get("projectEstimatedAmount")
+
+  const [propertyEstimatedAmount, setPropertyEstimatedAmount] = useState(
+    Cookies.get("propertyEstimatedAmount")
   );
+  const [repairsEstimatedAmount, setRepairsEstimatedAmount] = useState(
+    Cookies.get("repairsEstimatedAmount")
+  );
+  const [notaryCosts, setNotaryCosts] = useState(Cookies.get("notaryCosts"));
+  const [totalAmount, setTotalAmount] = useState(Cookies.get("totalAmount"));
   const [borrowerEmail, setBorrowerEmail] = useState(
     Cookies.get("borrowerEmail")
   );
@@ -71,8 +78,15 @@ const App = () => {
 
         <Route path="/project_estimated_amount">
           <ProjectEstimatedAmount
-            projectEstimatedAmount={projectEstimatedAmount}
-            setProjectEstimatedAmount={setProjectEstimatedAmount}
+            propertyEstimatedAmount={propertyEstimatedAmount}
+            setPropertyEstimatedAmount={setPropertyEstimatedAmount}
+            repairsEstimatedAmount={repairsEstimatedAmount}
+            setRepairsEstimatedAmount={setRepairsEstimatedAmount}
+            notaryCosts={notaryCosts}
+            setNotaryCosts={setNotaryCosts}
+            totalAmount={totalAmount}
+            setTotalAmount={setTotalAmount}
+            propertyCondition={propertyCondition}
           />
         </Route>
 
