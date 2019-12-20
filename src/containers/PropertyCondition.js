@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
 
 const PropertyCondition = props => {
-  // const [isSelected, setIsSelected] = useState(false);
-
   const setState = value => {
     props.setPropertyCondition(value);
     Cookies.set("propertyCondition", value);
@@ -18,7 +14,13 @@ const PropertyCondition = props => {
         <div className="main-title">état du bien</div>
 
         <div className="property-type-box-container">
-          <div className="property-type-box">
+          <div
+            className={
+              props.propertyCondition === "old"
+                ? "property-type-box selected"
+                : "property-type-box"
+            }
+          >
             <input
               type="radio"
               id="property-condition-1"
@@ -30,14 +32,25 @@ const PropertyCondition = props => {
               onChange={event => {
                 setState(event.target.value);
               }}
+            ></input>
+            <label
+              className={
+                props.propertyCondition === "old"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
+              for="property-condition-1"
             >
-              {/* {setIsSelected(true)} */}
-            </input>
-            <label className="property-type-text" for="property-condition-1">
               ancien
             </label>
           </div>
-          <div className="property-type-box">
+          <div
+            className={
+              props.propertyCondition === "new"
+                ? "property-type-box selected"
+                : "property-type-box"
+            }
+          >
             <input
               type="radio"
               id="property-condition-2"
@@ -50,7 +63,14 @@ const PropertyCondition = props => {
                 setState(event.target.value);
               }}
             ></input>
-            <label className="property-type-text" for="property-condition-2">
+            <label
+              className={
+                props.propertyCondition === "new"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
+              for="property-condition-2"
+            >
               neuf
             </label>
           </div>

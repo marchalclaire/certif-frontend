@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer.js";
-import Desktop from "../images/visuel-desktop-email.jpg";
-import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const FileNumber = () => {

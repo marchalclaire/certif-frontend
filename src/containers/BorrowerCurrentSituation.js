@@ -1,15 +1,12 @@
 import React from "react";
 import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
 
 const BorrowerCurrentSituation = props => {
   const setState = value => {
     props.setBorrowerCurrentSituation(value);
     Cookies.set("borrowerCurrentSituation", value);
   };
-  // const [isSelected, setIsSelected] = useState(false);
 
   return (
     <>
@@ -17,7 +14,13 @@ const BorrowerCurrentSituation = props => {
         <div className="main-title">votre situation actuelle</div>
 
         <div className="property-type-box-container">
-          <div className="property-borrower-situation-box">
+          <div
+            className={
+              props.borrowerCurrentSituation === "tenant"
+                ? "property-borrower-situation-box selected"
+                : "property-borrower-situation-box"
+            }
+          >
             <input
               type="radio"
               id="property-borrower-situation-1"
@@ -27,17 +30,25 @@ const BorrowerCurrentSituation = props => {
               onChange={event => {
                 setState(event.target.value);
               }}
-            >
-              {/* {setIsSelected(true)} */}
-            </input>
+            ></input>
             <label
-              className="property-type-text"
+              className={
+                props.borrowerCurrentSituation === "tenant"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
               for="property-borrower-situation-1"
             >
               locataire
             </label>
           </div>
-          <div className="property-borrower-situation-box">
+          <div
+            className={
+              props.borrowerCurrentSituation === "owner"
+                ? "property-borrower-situation-box selected"
+                : "property-borrower-situation-box"
+            }
+          >
             <input
               type="radio"
               id="property-borrower-situation-2"
@@ -49,13 +60,23 @@ const BorrowerCurrentSituation = props => {
               }}
             ></input>
             <label
-              className="property-type-text"
+              className={
+                props.borrowerCurrentSituation === "owner"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
               for="property-borrower-situation-2"
             >
               propriétaire
             </label>
           </div>
-          <div className="property-borrower-situation-box">
+          <div
+            className={
+              props.borrowerCurrentSituation === "staff housing"
+                ? "property-borrower-situation-box selected"
+                : "property-borrower-situation-box"
+            }
+          >
             <input
               type="radio"
               id="property-borrower-situation-3"
@@ -67,13 +88,23 @@ const BorrowerCurrentSituation = props => {
               }}
             ></input>
             <label
-              className="property-type-text"
+              className={
+                props.borrowerCurrentSituation === "staff housing"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
               for="property-borrower-situation-3"
             >
               bénéficiare d'un logement de fonction
             </label>
           </div>
-          <div className="property-borrower-situation-box">
+          <div
+            className={
+              props.borrowerCurrentSituation === "free accomodation"
+                ? "property-borrower-situation-box selected"
+                : "property-borrower-situation-box"
+            }
+          >
             <input
               type="radio"
               id="property-borrower-situation-4"
@@ -85,7 +116,11 @@ const BorrowerCurrentSituation = props => {
               }}
             ></input>
             <label
-              className="property-type-text"
+              className={
+                props.borrowerCurrentSituation === "free accomodation"
+                  ? "property-type-text checked"
+                  : "property-type-text"
+              }
               for="property-borrower-situation-4"
             >
               hébergé à titre gratuit

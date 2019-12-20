@@ -70,11 +70,6 @@
   justify-content: center;
   align-items: center;
 }
-.selected {
-  border: 1px solid var(--orange);
-  background-color: var(--orange);
-  box-shadow: 0 4px 0 var(--orange-box-shadow);
-}
 .property-type-text {
   font-family: "Oswald", sans-serif;
   font-size: 18px;
@@ -83,9 +78,6 @@
   color: var(--black);
   font-weight: bold;
   margin-left: 10px;
-}
-.checked {
-  color: white;
 }
 /* ------------------------------------ PROPERTY USE --------------------------------- */
 
@@ -297,4 +289,16 @@ ul {
 }
 .underline {
   text-decoration: underline;
+}
+
+/* ------------------------------------ IF SELECTED --------------------------------- */
+
+.selected {
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  box-shadow: 0 4px 0 var(--orange-box-shadow);
+}
+
+.checked {
+  color: white;
 }

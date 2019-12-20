@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
 
 const PropertyType = props => {
-  // const [isSelected, setIsSelected] = useState(false);
   const setState = value => {
     props.setPropertyType(value);
     Cookies.set("propertyType", value);
