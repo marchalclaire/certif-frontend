@@ -13,7 +13,7 @@ const BackOffice = () => {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:4001/backoffice/data")
+      .get("https://certifclairemarchal.herokuapp.com/backoffice/data")
       .then(response => {
         setSimulations(response.data);
       })
@@ -36,7 +36,9 @@ const BackOffice = () => {
   //on appel le back pour supprimer la simulation
   const deleteSimulation = id => {
     axios
-      .post("http://localhost:4001/backoffice/delete", { id: id })
+      .post("https://certifclairemarchal.herokuapp.com/backoffice/delete", {
+        id: id
+      })
       .then(response => {
         console.log("Simulation supprimée");
       })

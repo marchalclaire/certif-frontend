@@ -15,7 +15,10 @@ const BorrowerEmail = props => {
 
   const sendData = () => {
     axios
-      .post("http://localhost:4001/simulation/create/", props.globalState)
+      .post(
+        "https://certifclairemarchal.herokuapp.com/simulation/create/",
+        props.globalState
+      )
       .then(response => {
         const state = { ...props.globalState };
         state.fileNumber = response.data;
