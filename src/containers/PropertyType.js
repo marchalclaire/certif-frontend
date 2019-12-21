@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const PropertyType = props => {
   const history = useHistory();
-  //si une page a été sauvegardé dans un cookie, on revient à cette page au démarrage de l'appli (sauf pour la 1ère page):
+  //si une page a été sauvegardée dans un cookie, on revient à cette page au démarrage de l'appli (sauf pour la 1ère page):
   if (Cookies.get("currentPage") && Cookies.get("currentPage") !== "/") {
     history.push(Cookies.get("currentPage"));
   }

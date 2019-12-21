@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
-// props transmises par chaque page container. Props envoyée = lien de la page suivante servant à la navigation + booléen permettant de masquer le bouton "Précédent")
 const Footer = props => {
   const history = useHistory();
   return (
