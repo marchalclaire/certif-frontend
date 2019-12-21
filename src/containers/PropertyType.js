@@ -1,8 +1,14 @@
 import React from "react";
 import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
+import { useHistory } from "react-router-dom";
 
 const PropertyType = props => {
+  const history = useHistory();
+  //si une page a été sauvegardé dans un cookie, on revient à cette page au démarrage de l'appli (sauf pour la 1ère page):
+  if (Cookies.get("currentPage") && Cookies.get("currentPage") !== "/") {
+    history.push(Cookies.get("currentPage"));
+  }
   //on crée une copie de l'état global qu'on valorise puis on re-set ce nouvel état global. On conserve la donnée dans un cookie.
   const setState = value => {
     const state = { ...props.globalState };

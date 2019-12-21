@@ -101,6 +101,7 @@ const PropertyCountryCity = props => {
           une commune ciblée.
         </div>
         <Footer
+          previousLink="/borrower_current_situation"
           link={"/project_estimated_amount"}
           displayButtonNext={
             props.globalState.propertyCountry && props.globalState.propertyCity

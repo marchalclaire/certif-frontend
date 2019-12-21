@@ -26,10 +26,10 @@ const App = () => {
     propertyCountry: Cookies.get("propertyCountry"),
     propertyCity: Cookies.get("propertyCity"),
     borrowerEmail: Cookies.get("borrowerEmail"),
-    propertyEstimatedAmount: Cookies.get("propertyEstimatedAmount"),
-    repairsEstimatedAmount: Cookies.get("repairsEstimatedAmount"),
-    notaryCosts: Cookies.get("notaryCosts"),
-    totalAmount: Cookies.get("totalAmount"),
+    propertyEstimatedAmount: Number(Cookies.get("propertyEstimatedAmount")),
+    repairsEstimatedAmount: Number(Cookies.get("repairsEstimatedAmount")),
+    notaryCosts: Number(Cookies.get("notaryCosts")),
+    totalAmount: Number(Cookies.get("totalAmount")),
     fileNumber: ""
   });
   const [showModal, setShowModal] = useState(false);

@@ -74,6 +74,7 @@ const PropertyCondition = props => {
           </div>
         </div>
         <Footer
+          previousLink="/"
           link="/property_use"
           displayButtonNext={props.globalState.propertyCondition}
         ></Footer>

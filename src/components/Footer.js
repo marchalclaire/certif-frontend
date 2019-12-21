@@ -15,8 +15,9 @@ const Footer = props => {
           <div
             className="footer-button-previous"
             onClick={() => {
-              //permet le retour à la page précédente :
-              history.goBack();
+              //permet le retour à la page précédente, puis on enrgistre la page sur laquelle on va dans un cookie pour pouvoir revenir à cette étape en cas de coupure du navigateur :
+              history.push(props.previousLink);
+              Cookies.set("currentPage", props.previousLink);
             }}
           >
             Précédent
@@ -30,6 +31,7 @@ const Footer = props => {
             className="footer-button-next"
             onClick={() => {
               history.push(props.link);
+              Cookies.set("currentPage", props.link);
             }}
           >
             Suivant

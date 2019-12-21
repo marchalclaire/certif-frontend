@@ -30,22 +30,23 @@ const ProjectEstimatedAmount = props => {
       total = total + Number(propertyEstimatedAmount) + notaryCosts;
     }
     if (repairsEstimatedAmount) {
+      console.log(repairsEstimatedAmount);
       total = total + Number(repairsEstimatedAmount);
     }
 
     //on set les états complétés suite aux calculs et on conserve les données dans les cookies :
     const state = { ...props.globalState };
 
-    state.propertyEstimatedAmount = propertyEstimatedAmount;
-    Cookies.set("propertyEstimatedAmount", propertyEstimatedAmount);
-    state.repairsEstimatedAmount = repairsEstimatedAmount;
-    Cookies.set("repairsEstimatedAmount", repairsEstimatedAmount);
-    state.notaryCosts = notaryCosts;
-    setNotaryCosts(notaryCosts);
-    Cookies.set("notaryCosts", notaryCosts);
-    state.totalAmount = total;
-    setTotalAmount(total);
-    Cookies.set("totalAmount", total);
+    state.propertyEstimatedAmount = Number(propertyEstimatedAmount);
+    Cookies.set("propertyEstimatedAmount", Number(propertyEstimatedAmount));
+    state.repairsEstimatedAmount = Number(repairsEstimatedAmount);
+    Cookies.set("repairsEstimatedAmount", Number(repairsEstimatedAmount));
+    state.notaryCosts = Number(notaryCosts);
+    setNotaryCosts(Number(notaryCosts));
+    Cookies.set("notaryCosts", Number(notaryCosts));
+    state.totalAmount = Number(total);
+    setTotalAmount(Number(total));
+    Cookies.set("totalAmount", Number(total));
     props.setGlobalState(state);
   };
 
@@ -112,6 +113,7 @@ const ProjectEstimatedAmount = props => {
         </form>
 
         <Footer
+          previousLink="/property_country_city"
           link={"/borrower_email"}
           displayButtonNext={propertyEstimatedAmount}
         ></Footer>

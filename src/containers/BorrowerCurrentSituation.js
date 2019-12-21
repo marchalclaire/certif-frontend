@@ -136,6 +136,7 @@ const BorrowerCurrentSituation = props => {
           </div>
         </div>
         <Footer
+          previousLink="/property_use"
           link={"/property_country_city"}
           displayButtonNext={props.globalState.borrowerCurrentSituation}
         ></Footer>

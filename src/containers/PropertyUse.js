@@ -102,6 +102,7 @@ const PropertyUse = props => {
           </div>
         </div>
         <Footer
+          previousLink="/property_condition"
           link={"/borrower_current_situation"}
           displayButtonNext={props.globalState.propertyUse}
         ></Footer>

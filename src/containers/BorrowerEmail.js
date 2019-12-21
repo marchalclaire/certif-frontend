@@ -72,7 +72,8 @@ const BorrowerEmail = props => {
             <div
               className="footer-button-previous"
               onClick={() => {
-                history.goBack();
+                history.push("/project_estimated_amount");
+                Cookies.set("currentPage", "/project_estimated_amount");
               }}
             >
               Précédent

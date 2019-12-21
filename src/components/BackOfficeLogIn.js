@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const BackOfficeLogIn = props => {
-  //   const [password, setPassword] = useState("");
-  //   const [isError, setIsError] = useState(false);
+  const history = useHistory();
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  //   const login = async () => {
-  //     await axios
-  //       .post("http://localhost:4000/api/user/log_in", {
-  //         password: password
-  //       })
-  //       //si le statut de la réponse est 200 (=ok) :
-  //       .then(response => {
-  //         console.log(response.data);
-  //         props.onLogInSuccess(response.data.token);
-  //       })
-  //       //si le statut n'est pas 200 on passe dans le catch (pas obligatoire de noter error dans le cas ci-dessous)
-  //       .catch(error => {
-  //         setIsError(true);
-  //       });
-  //   };
+  const login = async () => {
+    await axios
+      .post("http://localhost:4001/backoffice/login", {
+        password: password
+      })
+      //si le statut de la réponse est 200 (=ok) :
+      .then(response => {
+        if (response.data.message === "ok") {
+          props.setShowModal(false);
+          history.push("/back_office");
+        } else {
+          setError(response.data.message);
+        }
+      })
+      //si le statut n'est pas 200 on passe dans le catch
+      .catch(error => {
+        setError(error.data.message);
+      });
+  };
 
   return (
     <>
@@ -44,22 +49,20 @@ const BackOfficeLogIn = props => {
               <input
                 className="m-input"
                 type="password"
-                // value=""
-                // onChange={event => setPassword(event.target.value)}
+                onChange={event => setPassword(event.target.value)}
               ></input>
             </div>
-            {/* <div className="m-button bold" onClick={() => login()}> */}
-            <Link className="link" to={"/back_office"}>
-              <div className="m-button">
-                <span onClick={() => props.setShowModal(false)}>
-                  Se connecter
-                </span>
-              </div>
-            </Link>
+            <div className="m-button">
+              <span
+                onClick={() => {
+                  login();
+                }}
+              >
+                Se connecter
+              </span>
+            </div>
 
-            {/* <div className="logIn-error">
-              {isError ? "Mot de passe inconnu" : ""}{" "}
-            </div> */}
+            <div className="logIn-error">{error ? error : ""} </div>
           </div>
         </div>
       </div>

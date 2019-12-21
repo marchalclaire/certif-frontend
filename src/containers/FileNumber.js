@@ -40,6 +40,9 @@ const FileNumber = props => {
     if (Cookies.get("totalAmount")) {
       Cookies.remove("totalAmount");
     }
+    if (Cookies.get("currentPage")) {
+      Cookies.remove("currentPage");
+    }
   }, []);
   return (
     <>
