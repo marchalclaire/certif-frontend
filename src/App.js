@@ -17,35 +17,20 @@ import FileNumber from "./containers/FileNumber";
 import BackOffice from "./containers/BackOffice";
 
 const App = () => {
-  //on crée un état global par page (ou plusieurs selon nombre de champs renseignés par page) pour enregistrer les données à chaque étape et les rendre persistantes gràce aux cookies.
-
-  // const [propertyCondition, setPropertyCondition] = useState(
-  //   Cookies.get("propertyCondition")
-  // );
-  // const [propertyUse, setPropertyUse] = useState(Cookies.get("propertyUse"));
-  const [borrowerCurrentSituation, setBorrowerCurrentSituation] = useState(
-    Cookies.get("borrowerCurrentSituation")
-  );
-  const [propertyCountry, setPropertyCountry] = useState(
-    Cookies.get("propertyCountry")
-  );
-  const [propertyCity, setPropertyCity] = useState(Cookies.get("propertyCity"));
-
-  const [propertyEstimatedAmount, setPropertyEstimatedAmount] = useState(
-    Cookies.get("propertyEstimatedAmount")
-  );
-  const [repairsEstimatedAmount, setRepairsEstimatedAmount] = useState(
-    Cookies.get("repairsEstimatedAmount")
-  );
-  const [notaryCosts, setNotaryCosts] = useState(Cookies.get("notaryCosts"));
-  const [totalAmount, setTotalAmount] = useState(Cookies.get("totalAmount"));
-  const [borrowerEmail, setBorrowerEmail] = useState(
-    Cookies.get("borrowerEmail")
-  );
+  //on crée un état global pour enregistrer les données à chaque étape et les rendre persistantes gràce aux cookies.
   const [globalState, setGlobalState] = useState({
     propertyType: Cookies.get("propertyType"),
     propertyCondition: Cookies.get("propertyCondition"),
-    propertyUse: Cookies.get("propertyUse")
+    propertyUse: Cookies.get("propertyUse"),
+    borrowerCurrentSituation: Cookies.get("borrowerCurrentSituation"),
+    propertyCountry: Cookies.get("propertyCountry"),
+    propertyCity: Cookies.get("propertyCity"),
+    borrowerEmail: Cookies.get("borrowerEmail"),
+    propertyEstimatedAmount: Cookies.get("propertyEstimatedAmount"),
+    repairsEstimatedAmount: Cookies.get("repairsEstimatedAmount"),
+    notaryCosts: Cookies.get("notaryCosts"),
+    totalAmount: Cookies.get("totalAmount"),
+    fileNumber: ""
   });
   const [showModal, setShowModal] = useState(false);
 
@@ -79,43 +64,37 @@ const App = () => {
 
         <Route path="/borrower_current_situation">
           <BorrowerCurrentSituation
-            borrowerCurrentSituation={borrowerCurrentSituation}
-            setBorrowerCurrentSituation={setBorrowerCurrentSituation}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
         <Route path="/property_country_city">
           <PropertyCountryCity
-            propertyCountry={propertyCountry}
-            setPropertyCountry={setPropertyCountry}
-            propertyCity={propertyCity}
-            setPropertyCity={setPropertyCity}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
         <Route path="/project_estimated_amount">
           <ProjectEstimatedAmount
-            propertyEstimatedAmount={propertyEstimatedAmount}
-            setPropertyEstimatedAmount={setPropertyEstimatedAmount}
-            repairsEstimatedAmount={repairsEstimatedAmount}
-            setRepairsEstimatedAmount={setRepairsEstimatedAmount}
-            notaryCosts={notaryCosts}
-            setNotaryCosts={setNotaryCosts}
-            totalAmount={totalAmount}
-            setTotalAmount={setTotalAmount}
-            // propertyCondition={propertyCondition}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
         <Route path="/borrower_email">
           <BorrowerEmail
-            borrowerEmail={borrowerEmail}
-            setBorrowerEmail={setBorrowerEmail}
+            globalState={globalState}
+            setGlobalState={setGlobalState}
           />
         </Route>
 
         <Route path="/file_number">
-          <FileNumber />
+          <FileNumber
+            globalState={globalState}
+            setGlobalState={setGlobalState}
+          />
         </Route>
 
         <Route path="/">
@@ -125,8 +104,6 @@ const App = () => {
           />
         </Route>
       </Switch>
-
-      {/* <Footer></Footer> */}
     </Router>
   );
 };

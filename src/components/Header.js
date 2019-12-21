@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../images/logo.jpg";
 
 const Header = props => {

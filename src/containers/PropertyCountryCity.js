@@ -33,14 +33,16 @@ const PropertyCountryCity = props => {
             name="countries"
             id="country-select"
             onChange={event => {
-              props.setPropertyCountry(event.target.value);
+              const state = { ...props.globalState };
+              state.propertyCountry = event.target.value;
+              props.setGlobalState(state);
               Cookies.set("propertyCountry", event.target.value);
             }}
           >
             <option value="">--Sélectionnez votre pays--</option>
             <option
               value="france"
-              selected={props.propertyCountry === "france"}
+              selected={props.globalState.propertyCountry === "france"}
             >
               france
             </option>
@@ -52,9 +54,11 @@ const PropertyCountryCity = props => {
             <input
               className="form-element input"
               type="text"
-              value={props.propertyCity}
+              value={props.globalState.propertyCity}
               onChange={event => {
-                props.setPropertyCity(event.target.value);
+                const state = { ...props.globalState };
+                state.propertyCity = event.target.value;
+                props.setGlobalState(state);
                 Cookies.set("propertyCity", event.target.value);
                 autocomplete(event.target.value);
               }}
@@ -67,9 +71,9 @@ const PropertyCountryCity = props => {
                     <li
                       //au clic sur la liste on set la valeur de l'input avec la valeur sélectionnée dans la liste puis on met la liste à 0 en settant l'état cities à tab vide :
                       onClick={() => {
-                        props.setPropertyCity(
-                          city.city + " (" + city.code + ")"
-                        );
+                        const state = { ...props.globalState };
+                        state.propertyCity = city.city + " (" + city.code + ")";
+                        props.setGlobalState(state);
                         Cookies.set(
                           "propertyCity",
                           city.city + " (" + city.code + ")"
@@ -98,7 +102,9 @@ const PropertyCountryCity = props => {
         </div>
         <Footer
           link={"/project_estimated_amount"}
-          displayButtonNext={props.propertyCountry && props.propertyCity}
+          displayButtonNext={
+            props.globalState.propertyCountry && props.globalState.propertyCity
+          }
         ></Footer>
       </div>
     </>

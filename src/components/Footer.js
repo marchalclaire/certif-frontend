@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -27,15 +26,14 @@ const Footer = props => {
         {!props.displayButtonNext ? (
           <div></div>
         ) : (
-          <Link
-            className="link"
-            to={props.link}
-            // onClick={() => {
-            //   Cookies.set("currentStep", props.link);
-            // }}
+          <div
+            className="footer-button-next"
+            onClick={() => {
+              history.push(props.link);
+            }}
           >
-            <div className="footer-button-next">Suivant</div>
-          </Link>
+            Suivant
+          </div>
         )}
       </div>
       <div>

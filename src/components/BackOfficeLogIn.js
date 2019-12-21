@@ -44,6 +44,7 @@ const BackOfficeLogIn = props => {
               <input
                 className="m-input"
                 type="password"
+                // value=""
                 // onChange={event => setPassword(event.target.value)}
               ></input>
             </div>

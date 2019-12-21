@@ -28,9 +28,7 @@ const PropertyCondition = props => {
               id="property-condition-1"
               name="property-condition"
               value="old"
-              // si état === "old", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
               checked={props.globalState.propertyCondition === "old"}
-              // au clic sur radio, on set l'état et conserve la donnée dans un cookie :
               onChange={event => {
                 setState(event.target.value);
               }}
@@ -58,9 +56,7 @@ const PropertyCondition = props => {
               id="property-condition-2"
               name="property-condition"
               value="new"
-              // si état === "new", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
               checked={props.globalState.propertyCondition === "new"}
-              // au clic sur radio, on set l'état et conserve la donnée dans un cookie :
               onChange={event => {
                 setState(event.target.value);
               }}
@@ -77,7 +73,6 @@ const PropertyCondition = props => {
             </label>
           </div>
         </div>
-        {/* on envoie au Footer les props suivantes pour la navigation : Lien de la page suivante + L'état "propertyCondition" (permettant ou non l'affichage du bouton "Suivant") */}
         <Footer
           link="/property_use"
           displayButtonNext={props.globalState.propertyCondition}

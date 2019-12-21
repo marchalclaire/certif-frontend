@@ -1,34 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer.js";
 import Cookies from "js-cookie";
 
 const ProjectEstimatedAmount = props => {
+  const [propertyEstimatedAmount, setPropertyEstimatedAmount] = useState(
+    props.globalState.propertyEstimatedAmount
+  );
+  const [repairsEstimatedAmount, setRepairsEstimatedAmount] = useState(
+    props.globalState.repairsEstimatedAmount
+  );
+  const [notaryCosts, setNotaryCosts] = useState(props.globalState.notaryCosts);
+  const [totalAmount, setTotalAmount] = useState(props.globalState.totalAmount);
+
   //on utilise un useEffect afin que chaque état se mette à jour à chaque changement d'état (nouvelle donnée entrée dans l'input). On évite le pb de l'asyncrone entre mise à jour de chaque état et calculs.
   useEffect(() => {
     calculate();
-  }, [props.propertyEstimatedAmount, props.repairsEstimatedAmount]);
+  }, [propertyEstimatedAmount, repairsEstimatedAmount]);
 
   //on crée une fonction pour calculer les frais de notaire et la somme totale :
   const calculate = () => {
     let total = 0;
     let notaryCosts = 0;
-    if (props.propertyEstimatedAmount) {
-      if (props.propertyCondition === "new") {
-        notaryCosts = Number(props.propertyEstimatedAmount) * 0.018;
+    if (propertyEstimatedAmount) {
+      if (props.globalState.propertyCondition === "new") {
+        notaryCosts = Number(propertyEstimatedAmount) * 0.018;
       } else {
-        notaryCosts = Number(props.propertyEstimatedAmount) * 0.0738;
+        notaryCosts = Number(propertyEstimatedAmount) * 0.0738;
       }
-      total = total + Number(props.propertyEstimatedAmount) + notaryCosts;
+      total = total + Number(propertyEstimatedAmount) + notaryCosts;
     }
-    if (props.repairsEstimatedAmount) {
-      total = total + Number(props.repairsEstimatedAmount);
+    if (repairsEstimatedAmount) {
+      total = total + Number(repairsEstimatedAmount);
     }
 
     //on set les états complétés suite aux calculs et on conserve les données dans les cookies :
-    props.setNotaryCosts(notaryCosts);
+    const state = { ...props.globalState };
+
+    state.propertyEstimatedAmount = propertyEstimatedAmount;
+    Cookies.set("propertyEstimatedAmount", propertyEstimatedAmount);
+    state.repairsEstimatedAmount = repairsEstimatedAmount;
+    Cookies.set("repairsEstimatedAmount", repairsEstimatedAmount);
+    state.notaryCosts = notaryCosts;
+    setNotaryCosts(notaryCosts);
     Cookies.set("notaryCosts", notaryCosts);
-    props.setTotalAmount(total);
+    state.totalAmount = total;
+    setTotalAmount(total);
     Cookies.set("totalAmount", total);
+    props.setGlobalState(state);
   };
 
   return (
@@ -46,10 +64,9 @@ const ProjectEstimatedAmount = props => {
             name="property-estimated-amount"
             min="0"
             required
-            value={props.propertyEstimatedAmount}
+            value={propertyEstimatedAmount}
             onChange={event => {
-              props.setPropertyEstimatedAmount(event.target.value);
-              Cookies.set("propertyEstimatedAmount", event.target.value);
+              setPropertyEstimatedAmount(event.target.value);
             }}
           ></input>
           <div className="currency-symbol">€</div>
@@ -61,10 +78,9 @@ const ProjectEstimatedAmount = props => {
             className="form-element input right"
             type="number"
             name="repairs-estimated-amount"
-            value={props.repairsEstimatedAmount}
+            value={repairsEstimatedAmount}
             onChange={event => {
-              props.setRepairsEstimatedAmount(event.target.value);
-              Cookies.set("repairsEstimatedAmount", event.target.value);
+              setRepairsEstimatedAmount(event.target.value);
             }}
           ></input>
           <div className="currency-symbol">€</div>
@@ -76,7 +92,7 @@ const ProjectEstimatedAmount = props => {
             type="number"
             name="notary-costs"
             readOnly
-            value={props.notaryCosts}
+            value={notaryCosts}
           ></input>
           <div className="currency-symbol">€</div>
         </form>
@@ -90,15 +106,14 @@ const ProjectEstimatedAmount = props => {
             type="number"
             name="total-amount"
             readOnly
-            value={props.totalAmount}
+            value={totalAmount}
           ></input>
           <div className="currency-symbol">€</div>
         </form>
 
         <Footer
           link={"/borrower_email"}
-          //on envoie au Footer "props.propertyEstimatedAmount" dans le but de pouvoir afficher le bouton "Suivant" et la navigation vers la page suivante. En effet si le champ "Montant estimé de votre acquisition " est complété, les autres le seront automatiquement par calculs (sauf champ "travaux" qui n'est pas un champ obligatoire).
-          displayButtonNext={props.propertyEstimatedAmount}
+          displayButtonNext={propertyEstimatedAmount}
         ></Footer>
       </div>
     </>

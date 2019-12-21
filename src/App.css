@@ -15,13 +15,10 @@
   --grey-box-shadow: #e4e4e4;
   --grey-background: #f1f1f1;
 }
-
-/* pour faire disparaître la CSS dù au lien, donner une className au lien et noter ceci : */
 .link {
   text-decoration: inherit;
   color: inherit;
 }
-
 /* ------------------------------------ HEADER --------------------------------- */
 
 .header {
@@ -263,6 +260,9 @@ ul {
   font-family: "Oswald", sans-serif;
   font-size: 14px;
 }
+.container-button-submit {
+  display: flex;
+}
 /* ------------------------------------ FILE NUMBER --------------------------------- */
 
 .file-number-text {
@@ -290,6 +290,7 @@ ul {
   background-color: var(--orange);
   padding: 5px 40px 5px 40px;
   border-radius: 30px;
+  cursor: pointer;
 }
 .footer-text {
   font-family: "Oswald", sans-serif;
