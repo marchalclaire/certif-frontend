@@ -18,7 +18,7 @@ const BorrowerCurrentSituation = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.globalState.borrowerCurrentSituation === "tenant"
+              props.globalState.borrowerCurrentSituation === "locataire"
                 ? "property-borrower-situation-box selected"
                 : "property-borrower-situation-box"
             }
@@ -27,15 +27,17 @@ const BorrowerCurrentSituation = props => {
               type="radio"
               id="property-borrower-situation-1"
               name="property-borrower-situation"
-              value="tenant"
-              checked={props.globalState.borrowerCurrentSituation === "tenant"}
+              value="locataire"
+              checked={
+                props.globalState.borrowerCurrentSituation === "locataire"
+              }
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.borrowerCurrentSituation === "tenant"
+                props.globalState.borrowerCurrentSituation === "locataire"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -46,7 +48,7 @@ const BorrowerCurrentSituation = props => {
           </div>
           <div
             className={
-              props.globalState.borrowerCurrentSituation === "owner"
+              props.globalState.borrowerCurrentSituation === "propriétaire"
                 ? "property-borrower-situation-box selected"
                 : "property-borrower-situation-box"
             }
@@ -55,15 +57,17 @@ const BorrowerCurrentSituation = props => {
               type="radio"
               id="property-borrower-situation-2"
               name="property-borrower-situation"
-              value="owner"
-              checked={props.globalState.borrowerCurrentSituation === "owner"}
+              value="propriétaire"
+              checked={
+                props.globalState.borrowerCurrentSituation === "propriétaire"
+              }
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.borrowerCurrentSituation === "owner"
+                props.globalState.borrowerCurrentSituation === "propriétaire"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -74,7 +78,8 @@ const BorrowerCurrentSituation = props => {
           </div>
           <div
             className={
-              props.globalState.borrowerCurrentSituation === "staff housing"
+              props.globalState.borrowerCurrentSituation ===
+              "bénéficiare d'un logement de fonction"
                 ? "property-borrower-situation-box selected"
                 : "property-borrower-situation-box"
             }
@@ -83,9 +88,10 @@ const BorrowerCurrentSituation = props => {
               type="radio"
               id="property-borrower-situation-3"
               name="property-borrower-situation"
-              value="staff housing"
+              value="bénéficiare d'un logement de fonction"
               checked={
-                props.globalState.borrowerCurrentSituation === "staff housing"
+                props.globalState.borrowerCurrentSituation ===
+                "bénéficiare d'un logement de fonction"
               }
               onChange={event => {
                 setState(event.target.value);
@@ -93,7 +99,8 @@ const BorrowerCurrentSituation = props => {
             ></input>
             <label
               className={
-                props.globalState.borrowerCurrentSituation === "staff housing"
+                props.globalState.borrowerCurrentSituation ===
+                "bénéficiare d'un logement de fonction"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -104,7 +111,8 @@ const BorrowerCurrentSituation = props => {
           </div>
           <div
             className={
-              props.globalState.borrowerCurrentSituation === "free accomodation"
+              props.globalState.borrowerCurrentSituation ===
+              "hébergé à titre gratuit"
                 ? "property-borrower-situation-box selected"
                 : "property-borrower-situation-box"
             }
@@ -113,10 +121,10 @@ const BorrowerCurrentSituation = props => {
               type="radio"
               id="property-borrower-situation-4"
               name="property-borrower-situation"
-              value="free accomodation"
+              value="hébergé à titre gratuit"
               checked={
                 props.globalState.borrowerCurrentSituation ===
-                "free accomodation"
+                "hébergé à titre gratuit"
               }
               onChange={event => {
                 setState(event.target.value);
@@ -125,7 +133,7 @@ const BorrowerCurrentSituation = props => {
             <label
               className={
                 props.globalState.borrowerCurrentSituation ===
-                "free accomodation"
+                "hébergé à titre gratuit"
                   ? "property-type-text checked"
                   : "property-type-text"
               }

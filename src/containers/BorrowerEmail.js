@@ -14,7 +14,7 @@ const BorrowerEmail = props => {
   };
 
   const sendData = () => {
-    const response = axios
+    axios
       .post("http://localhost:4001/simulation/create/", props.globalState)
       .then(response => {
         const state = { ...props.globalState };

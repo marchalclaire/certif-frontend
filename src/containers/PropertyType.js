@@ -24,7 +24,7 @@ const PropertyType = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.globalState.propertyType === "house"
+              props.globalState.propertyType === "maison"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -33,9 +33,9 @@ const PropertyType = props => {
               type="radio"
               id="property-type-1"
               name="property-type"
-              value="house"
-              // si état === "house", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
-              checked={props.globalState.propertyType === "house"}
+              value="maison"
+              // si état === "maison", on sait que le radio a été coché precedemment et on veut qu'il le reste malgré un changement de page.
+              checked={props.globalState.propertyType === "maison"}
               // au clic sur radio, on set l'état :
               onChange={event => {
                 setState(event.target.value);
@@ -43,7 +43,7 @@ const PropertyType = props => {
             ></input>
             <label
               className={
-                props.globalState.propertyType === "house"
+                props.globalState.propertyType === "maison"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -54,7 +54,7 @@ const PropertyType = props => {
           </div>
           <div
             className={
-              props.globalState.propertyType === "flat"
+              props.globalState.propertyType === "appartement"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -63,15 +63,15 @@ const PropertyType = props => {
               type="radio"
               id="property-type-2"
               name="property-type"
-              value="flat"
-              checked={props.globalState.propertyType === "flat"}
+              value="appartement"
+              checked={props.globalState.propertyType === "appartement"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyType === "flat"
+                props.globalState.propertyType === "appartement"
                   ? "property-type-text checked"
                   : "property-type-text"
               }

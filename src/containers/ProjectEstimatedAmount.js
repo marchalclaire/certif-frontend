@@ -22,7 +22,7 @@ const ProjectEstimatedAmount = props => {
     let total = 0;
     let notaryCosts = 0;
     if (propertyEstimatedAmount) {
-      if (props.globalState.propertyCondition === "new") {
+      if (props.globalState.propertyCondition === "neuf") {
         notaryCosts = Number(propertyEstimatedAmount) * 0.018;
       } else {
         notaryCosts = Number(propertyEstimatedAmount) * 0.0738;

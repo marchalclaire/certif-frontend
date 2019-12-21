@@ -18,7 +18,7 @@ const PropertyUse = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.globalState.propertyUse === "principal"
+              props.globalState.propertyUse === "résidence principale"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -27,15 +27,15 @@ const PropertyUse = props => {
               type="radio"
               id="property-use-1"
               name="property-use"
-              value="principal"
-              checked={props.globalState.propertyUse === "principal"}
+              value="résidence principale"
+              checked={props.globalState.propertyUse === "résidence principale"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyUse === "principal"
+                props.globalState.propertyUse === "résidence principale"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -46,7 +46,7 @@ const PropertyUse = props => {
           </div>
           <div
             className={
-              props.globalState.propertyUse === "secondary"
+              props.globalState.propertyUse === "résidence secondaire"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -55,15 +55,15 @@ const PropertyUse = props => {
               type="radio"
               id="property-use-2"
               name="property-use"
-              value="secondary"
-              checked={props.globalState.propertyUse === "secondary"}
+              value="résidence secondaire"
+              checked={props.globalState.propertyUse === "résidence secondaire"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyUse === "secondary"
+                props.globalState.propertyUse === "résidence secondaire"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -74,7 +74,7 @@ const PropertyUse = props => {
           </div>
           <div
             className={
-              props.globalState.propertyUse === "investment"
+              props.globalState.propertyUse === "investissement locatif"
                 ? "property-use-box selected"
                 : "property-use-box"
             }
@@ -83,15 +83,17 @@ const PropertyUse = props => {
               type="radio"
               id="property-use-3"
               name="property-use"
-              value="investment"
-              checked={props.globalState.propertyUse === "investment"}
+              value="investissement locatif"
+              checked={
+                props.globalState.propertyUse === "investissement locatif"
+              }
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyUse === "investment"
+                props.globalState.propertyUse === "investissement locatif"
                   ? "property-type-text checked"
                   : "property-type-text"
               }

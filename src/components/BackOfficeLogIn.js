@@ -52,14 +52,13 @@ const BackOfficeLogIn = props => {
                 onChange={event => setPassword(event.target.value)}
               ></input>
             </div>
-            <div className="m-button">
-              <span
-                onClick={() => {
-                  login();
-                }}
-              >
-                Se connecter
-              </span>
+            <div
+              className="m-button"
+              onClick={() => {
+                login();
+              }}
+            >
+              Se connecter
             </div>
 
             <div className="logIn-error">{error ? error : ""} </div>

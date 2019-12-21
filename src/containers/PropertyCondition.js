@@ -18,7 +18,7 @@ const PropertyCondition = props => {
         <div className="property-type-box-container">
           <div
             className={
-              props.globalState.propertyCondition === "old"
+              props.globalState.propertyCondition === "ancien"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -27,15 +27,15 @@ const PropertyCondition = props => {
               type="radio"
               id="property-condition-1"
               name="property-condition"
-              value="old"
-              checked={props.globalState.propertyCondition === "old"}
+              value="ancien"
+              checked={props.globalState.propertyCondition === "ancien"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyCondition === "old"
+                props.globalState.propertyCondition === "ancien"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
@@ -46,7 +46,7 @@ const PropertyCondition = props => {
           </div>
           <div
             className={
-              props.globalState.propertyCondition === "new"
+              props.globalState.propertyCondition === "neuf"
                 ? "property-type-box selected"
                 : "property-type-box"
             }
@@ -55,15 +55,15 @@ const PropertyCondition = props => {
               type="radio"
               id="property-condition-2"
               name="property-condition"
-              value="new"
-              checked={props.globalState.propertyCondition === "new"}
+              value="neuf"
+              checked={props.globalState.propertyCondition === "neuf"}
               onChange={event => {
                 setState(event.target.value);
               }}
             ></input>
             <label
               className={
-                props.globalState.propertyCondition === "new"
+                props.globalState.propertyCondition === "neuf"
                   ? "property-type-text checked"
                   : "property-type-text"
               }
